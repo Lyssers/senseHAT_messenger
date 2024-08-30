@@ -1,14 +1,11 @@
 from fastapi.middleware.cors import CORSMiddleware
-import math
 import asyncio
 import time
-from sense_hat import SenseHat, ACTION_PRESSED, ACTION_HELD, ACTION_RELEASED
-import RPi.GPIO as GPIO
+from sense_hat import SenseHat
 from fastapi import FastAPI
 import uvicorn
 from datetime import datetime
 from dataclasses import dataclass
-import tm1637
 
 #Color helpers
 E = (0,0,0) #Empty
@@ -89,7 +86,7 @@ async def SetMessage(message = "EMPTY"):
 
 #Instantiate uvicorn 
 if __name__ == "__main__":
-        uvicorn.run(app, host="0.0.0.0", port=8900, log_level="info")
+        uvicorn.run(app, host="0.0.0.0", port=8000, log_level="info")
         
 #Play a message as it comes in
 #Keep playing it until a new message comes in
