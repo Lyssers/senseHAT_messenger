@@ -1,4 +1,4 @@
-#A Mesenger for your SenseHAT!
+# A Mesenger for your SenseHAT!
 
 This consists of two main components:
 
