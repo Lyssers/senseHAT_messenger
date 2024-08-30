@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send me a message!</title>
+    <style>
+        /* Center the header text */
+        header {
+            text-align: center;
+        }
+	.main {
+		display: flex;
+  		justify-content: center;
+  		align-items: center;
+  		height: 200px;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Send Me A Message!</h1>
+    </header>
+    <div class="main">
+    	<input type="text" maxlength="100" class="form-control" placeholder="e.g. 'Hello!'" name="message" id="message">
+	<button type="send" class="btn btn-default" id="send"> Send </button>
+</body>
+
+<div id="responseContainer"></div>
+
+<script>
+document.getElementById('send').addEventListener('click', function() {
+// Your API endpoint
+	const apiUrl = 'https://YOUR_URL_HERE/messageSend?message=' + document.getElementById('message').value;
+	fetch(apiUrl)
+	.then(response => response.json())  // Parsing the JSON from the response
+	.then(data => {
+
+		// Formatting and displaying the data
+		const responseContainer = document.getElementById('responseContainer');
+		responseContainer.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;	
+			}).catch(error => {
+				console.error('Error fetching data:', error);
+				document.getElementById('responseContainer').innerText = 'Failed to load data.';
+			});
+});
+</script>
+</html>
